@@ -24,8 +24,7 @@ testdata = eht.obsdata.load_uvfits("test.uvf", polrep="circ")
 tstokes = testdata.copy().switch_polrep("stokes")
 tstokes.plot_bl("AA","AP","amp",color="blue",legend=true,label="AA-AP")
 
- = tstokes.unpack_bl("AA","AP","amp")
-
+data = tstokes.unpack_bl("AA", "AP", ["amp","phase","sigma"])|>structarray
 ```
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://KajWiik.github.io/EHTIM.jl/stable)
