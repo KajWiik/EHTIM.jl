@@ -1,0 +1,6 @@
+using PyPlot
+
+a_name = "/home/kjwiik/proj/eht_cal/cal/hops_hi/hops_3599_SGRA_hi_V0_both_scan_final.uvfits"
+apriori = eht.obsdata.load_uvfits(a_name, polrep="circ")
+a = apriori.copy().switch_polrep("stokes")
+a.plot_bl("AA","AP","amp",color="blue",legend=true,label="AA-AP")
