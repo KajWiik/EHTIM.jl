@@ -26,6 +26,7 @@ tstokes.plot_bl("AA","AP","amp",color="blue",legend=true,label="AA-AP")
 
 data = tstokes.unpack_bl("AA", "AP", ["amp","phase","sigma"])|>structarray
 ```
+Note that `structarray` is still just a proof of concept with hardwired three `Float64` types.
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://KajWiik.github.io/EHTIM.jl/stable)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://KajWiik.github.io/EHTIM.jl/dev)
