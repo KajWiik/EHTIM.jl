@@ -1,6 +1,6 @@
 # EHTIM
 
-A thin wrapper for ehtim (eht-imaging) Python package, see https://github.com/achael/eht-imaging
+A (very!) thin wrapper for ehtim (eht-imaging) Python package, see https://github.com/achael/eht-imaging
 
 ## Installation
 
@@ -26,7 +26,10 @@ tstokes.plot_bl("AA","AP","amp",color="blue",legend=true,label="AA-AP")
 
 data = tstokes.unpack_bl("AA", "AP", ["amp","phase","sigma"])|>structarray
 ```
-Note that `structarray` is still just a proof of concept with hardwired three `Float64` types.
+### `structarray()`
+`structarray()` converts structured numarray from `unpack` and `unpack_bl` to Julia `StructArray` and handles now all(?) types in the obsdata object. It currently does not handle cases when `mode` is set (Array of objects is returned). Numeric arrays are converted without a copy, Unicode arrays are copied.
+
+TODO: tests...
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://KajWiik.github.io/EHTIM.jl/stable)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://KajWiik.github.io/EHTIM.jl/dev)
