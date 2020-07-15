@@ -1,11 +1,15 @@
 module EHTIM
-using PyCall, StructArrays
+using PyCall, StructArrays, Dates
 
 export structarray, bldict
 
 new() = pyimport("ehtim")
 
-function structarray(x::PyCall.PyObject)
+function get_obstime(po::PyObject)
+    julian2datetime.(get(po.data, :time)/24 .+ 2400000.5 .+ obs.mjd)
+end
+
+function structarray(x::PyCall.PyObject; datetime = true)
     labels = Symbol.(x.dtype.names)
     data = []
     for (i,n) in enumerate(labels)
@@ -13,6 +17,12 @@ function structarray(x::PyCall.PyObject)
         # https://www.oreilly.com/library/view/python-for-finance/9781491945360/ch04.html
         push!(data, get(x.dtype, i-1).str[2] == 'U' ? get.(x, i-1) : PyArray(py"$x[$n]"o))
     end
+    if datetime && any(x.data.dtype.names .== "time")
+        obstime = get_obstime(x)
+        push!(labels, :datetime)
+        push!(data, get_obstime(x))
+    end
+
     (;zip(labels, data)...)|>StructArray
 end
 
