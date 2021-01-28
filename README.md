@@ -8,6 +8,7 @@ You have to install ehtim Python package manually. Maybe it is easiest to first 
 ```julia
 ENV["PYTHON"] = "/home/kjwiik/miniconda2/bin/python"
 ] add PyCall Pkg
+using Pkg
 Pkg.build("PyCall")
 ```
 Then install ehtim and pynfft in miniconda2 environment:
@@ -19,6 +20,7 @@ pip install ehtim
 ## Usage
 
 ```julia
+using EHTIM
 eht = EHTIM.new()
 testdata = eht.obsdata.load_uvfits("test.uvf", polrep="circ")
 tstokes = testdata.copy().switch_polrep("stokes")
