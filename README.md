@@ -6,7 +6,7 @@ A (very!) thin wrapper for ehtim (eht-imaging) Python package, see https://githu
 
 You have to install ehtim Python package manually. Maybe it is easiest to first install miniconda2 and set PyCall to use it, e.g.
 ```julia
-ENV["PYTHON"] = "/home/kjwiik/miniconda2/bin/python
+ENV["PYTHON"] = "/home/kjwiik/miniconda2/bin/python"
 ] add PyCall Pkg
 Pkg.build("PyCall")
 ```
