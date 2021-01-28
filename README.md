@@ -13,6 +13,7 @@ Pkg.build("PyCall")
 ```
 Then install ehtim and pynfft in miniconda2 environment:
 ```
+conda activate
 conda install -c conda-forge pynfft
 pip install ehtim
 ```
